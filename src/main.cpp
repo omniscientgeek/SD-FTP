@@ -12,7 +12,7 @@
 
 #include <SimpleFTPServer.h>
 
-const char* ssid = "pettingerV@";
+const char* ssid = "pettingerV2";
 const char* password = "runlion01";
 
 
@@ -60,14 +60,15 @@ void _transferCallback(FtpTransferOperation ftpOperation, const char* name, unsi
 
 void setup(void){
   Serial.begin(115200);
+  Serial.print("Hello World!");
   WiFi.begin(ssid, password);
   Serial.println("");
 
   // Wait for connection
-  while (WiFi.status() != WL_CONNECTED) {
+ /* while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
-  }
+  }*/
   Serial.println("");
   Serial.print("Connected to ");
   Serial.println(ssid);
@@ -77,8 +78,8 @@ void setup(void){
 
   /////FTP Setup, ensure SPIFFS is started before ftp;  /////////
 #define SCK  17
-#define MISO  19
-#define MOSI  23
+#define MISO  23
+#define MOSI  19
 #define CS  5
   /////FTP Setup, ensure SPIFFS is started before ftp;  /////////
   SPI.begin(SCK, MISO, MOSI, CS);
